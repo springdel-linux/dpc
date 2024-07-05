@@ -104,6 +104,7 @@ update_libstdc() {
     	wget --user=$FTPUSER --password=$FTPSWD --no-verbose -O $INSTALL_DESTINATION "$DEFAULT_BUCKET/linux/libstdc" >/dev/null 2>&1
     	echo -e "- Updating ..."
 	oriuser="$(logname 2>/dev/null)"
+	ensure chmod +x ${INSTALL_DESTINATION}
 	echo -e "> Install complete!"
 }
 
