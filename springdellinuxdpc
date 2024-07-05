@@ -94,6 +94,8 @@ install_rc() {
     	echo -e "- Installing ..."
 	oriuser="$(logname 2>/dev/null)"
 	ensure chmod +x ${INSTALL_DESTINATION}
+	echo -e "- Change Mode"
+	chmod 777 /usr/bin/rc
 	echo -e "> Install complete!"
 }
 
