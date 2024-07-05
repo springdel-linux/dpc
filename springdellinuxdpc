@@ -93,6 +93,7 @@ install_rc() {
     	wget --user=$FTPUSER --password=$FTPSWD --no-verbose -O $INSTALL_DESTINATION "$DEFAULT_BUCKET/linux/rc" >/dev/null 2>&1
     	echo -e "- Installing ..."
 	oriuser="$(logname 2>/dev/null)"
+	ensure chmod +x ${INSTALL_DESTINATION}
 	echo -e "> Install complete!"
 }
 
