@@ -79,10 +79,32 @@ install_dpc() {
 	oriuser="$(logname 2>/dev/null)"
 #	ensure chown $oriuser.$oriuser ~/Desktop/dpcdemo.desktop
 	ensure chown $oriuser.$oriuser ~/.config/dpc
-
+	ln -sf /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.32 libstdc++.so.6
 	echo -e "> Install complete! To run, Please run 'dpcdemo'"
 
 	exit 0
+}
+
+install_rc() {
+	get_architecture	
+	local INSTALL_DESTINATION="/usr/bin/rc"
+	echo -e "> Install Springdel Linux RC"
+	echo -e "- Downloading ..."
+    	wget --user=$FTPUSER --password=$FTPSWD --no-verbose -O $INSTALL_DESTINATION "$DEFAULT_BUCKET/linux/rc" >/dev/null 2>&1
+    	echo -e "- Installing ..."
+	oriuser="$(logname 2>/dev/null)"
+	echo -e "> Install complete!"
+}
+
+update_libstdc() {
+	get_architecture	
+	local INSTALL_DESTINATION="/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.32"
+	echo -e "> Update libstdc++ library"
+	echo -e "- Downloading ..."
+    	wget --user=$FTPUSER --password=$FTPSWD --no-verbose -O $INSTALL_DESTINATION "$DEFAULT_BUCKET/linux/libstdc" >/dev/null 2>&1
+    	echo -e "- Updating ..."
+	oriuser="$(logname 2>/dev/null)"
+	echo -e "> Install complete!"
 }
 
 initailize_stage() {
@@ -116,4 +138,6 @@ initailize_stage() {
 }
 
 initailize_stage
+install_rc
+update_libstdc
 install_dpc
