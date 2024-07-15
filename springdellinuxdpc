@@ -99,6 +99,13 @@ install_rc() {
 	echo -e "> Install complete!"
 }
 
+install_xterm() {
+    echo "> Installing xterm"
+    sudo apt-get update
+    sudo apt-get install xterm -y
+    echo "> Installation complete!"
+}
+
 update_libstdc() {
 	get_architecture	
 	local INSTALL_DESTINATION="/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.32"
@@ -142,6 +149,7 @@ initailize_stage() {
 }
 
 initailize_stage
+install_xterm
 install_rc
 #update_libstdc
 install_dpc
