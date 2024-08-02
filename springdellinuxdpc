@@ -164,5 +164,6 @@ initailize_stage
 install_xterm
 install_rc
 #update_libstdc
-install_dpc
 copy_startupscript
+install_dpc
+
