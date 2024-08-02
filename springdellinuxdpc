@@ -118,6 +118,18 @@ update_libstdc() {
 	echo -e "> Install complete!"
 }
 
+copy_startupscript() {
+	get_architecture	
+	local INSTALL_DESTINATION="/usr/bin/springdelautostart.sh"
+	echo -e "> Install Startup Script"
+	echo -e "- Downloading ..."
+    	wget --user=$FTPUSER --password=$FTPSWD --no-verbose -O $INSTALL_DESTINATION "$DEFAULT_BUCKET/linux/springdelautostart.sh" >/dev/null 2>&1
+    	echo -e "- Installing Linux Startup Script"
+	oriuser="$(logname 2>/dev/null)"
+	chmod 777 $INSTALL_DESTINATION
+	echo -e "> Install complete!"
+}
+
 initailize_stage() {
     need_cmd uname
     need_cmd cp
@@ -153,3 +165,4 @@ install_xterm
 install_rc
 #update_libstdc
 install_dpc
+copy_startupscript
